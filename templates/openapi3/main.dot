@@ -58,9 +58,9 @@ Base URLs:
 
 <a id="schema{{=s.toLowerCase()}}"></a>
 
-```json
+~~~json
 {{=data.utils.safejson(data.utils.getSample(schema,data.options,{},data.api),null,2)}}
-```
+~~~
 
 {{ var enums = []; }}
 {{ var blocks = data.utils.schemaToArray(origSchema,-1,{trim:true,join:true},data); }}

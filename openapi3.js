@@ -289,19 +289,19 @@ function getBodyParameterExamples(data) {
         xmlWrap = data.bodyParameter.schema["x-widdershins-oldRef"].split('/').pop();
     }
     if (common.doContentType(data.consumes, 'json')) {
-        content += '```json\n';
+        content += '~~~json\n';
         content += safejson(obj,null,2) + '\n';
-        content += '```\n\n';
+        content += '~~~\n\n';
     }
     if (common.doContentType(data.consumes, 'yaml')) {
-        content += '```yaml\n';
+        content += '~~~yaml\n';
         content += yaml.safeDump(obj) + '\n';
-        content += '```\n\n';
+        content += '~~~\n\n';
     }
     if (common.doContentType(data.consumes, 'form')) {
-        content += '```yaml\n';
+        content += '~~~yaml\n';
         content += yaml.safeDump(obj) + '\n';
-        content += '```\n\n';
+        content += '~~~\n\n';
     }
     if (common.doContentType(data.consumes, 'xml') && (typeof obj === 'object')) {
         if (xmlWrap) {
@@ -309,9 +309,9 @@ function getBodyParameterExamples(data) {
             newObj[xmlWrap] = obj;
             obj = newObj;
         }
-        content += '```xml\n';
+        content += '~~~xml\n';
         content += xml.getXml(JSON.parse(safejson(obj)), '@', '', true, '  ', false) + '\n';
-        content += '```\n\n';
+        content += '~~~\n\n';
     }
     return content;
 }
@@ -426,14 +426,14 @@ function getResponseExamples(data) {
                         obj = common.getSample(obj,data.options,{skipWriteOnly:true},data.api);
                     }
                     if (common.doContentType(cta, 'json')) {
-                        content += '```json\n';
+                        content += '~~~json\n';
                         content += safejson(obj, null, 2) + '\n';
-                        content += '```\n\n';
+                        content += '~~~\n\n';
                     }
                     if (common.doContentType(cta, 'yaml')) {
-                        content += '```yaml\n';
+                        content += '~~~yaml\n';
                         content += yaml.safeDump(obj) + '\n';
-                        content += '```\n\n';
+                        content += '~~~\n\n';
                     }
                     if (xmlWrap) {
                         var newObj = {};
@@ -441,9 +441,9 @@ function getResponseExamples(data) {
                         obj = newObj;
                     }
                     if ((typeof obj === 'object') && common.doContentType(cta, 'xml')) {
-                        content += '```xml\n';
+                        content += '~~~xml\n';
                         content += xml.getXml(JSON.parse(safejson(obj)), '@', '', true, '  ', false) + '\n';
-                        content += '```\n\n';
+                        content += '~~~\n\n';
                     }
                 }
             }

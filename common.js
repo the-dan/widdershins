@@ -114,7 +114,7 @@ function getCodeSampleTemplateName(target) {
 }
 
 function generateCodeSnippet(lang, code) {
-    const snippetSeparator = '```';
+    const snippetSeparator = '~~~';
     return `${snippetSeparator}${lang}\n${code}\n${snippetSeparator}\n\n`;
 }
 
