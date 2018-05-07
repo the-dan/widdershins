@@ -560,7 +560,15 @@ function convertInner(api, options, callback) {
         data.servers = [{url:options.loadedFrom}];
     }
     else {
-        data.servers = [{url:'//'}];
+        var host = "";
+        if (data.host) {
+            host = data.host;
+        }
+        var scheme = "https"
+        if (data.scheme) {
+            scheme = data.scheme;
+        }
+        data.servers = [{url:  scheme + '://' + host}];
     }
     data.host = up.parse(data.servers[0].url).host;
     data.protocol = up.parse(data.servers[0].url).protocol;
