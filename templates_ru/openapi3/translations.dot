@@ -1,0 +1,13 @@
+{{
+data.translations.defaultTag = 'По умолчанию';
+data.translations.responseDefault = 'По умолчанию';
+data.translations.responseUnknown = 'Unknown';
+data.translations.schemaInline = 'Inline';
+data.translations.schemaNone = 'Нет';
+data.translations.externalDocs = 'Внешняя документация';
+data.translations.secDefNone = 'НЕТ';
+data.translations.secDefScopes = 'Scopes';
+data.translations.anonymous = 'аноним';
+data.translations.continued = 'continued';
+data.translations.indent = '»';
+}}

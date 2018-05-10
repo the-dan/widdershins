@@ -1,0 +1,38 @@
+<h3 id="{{=data.operationUniqueName}}-parameters">Параметры</h3>
+
+|Параметр|Входящий|Тип|Обязательный|Описание|
+|---|---|---|---|---|
+{{~ data.parameters :p}}|{{=p.name}}|{{=p.in}}|{{=p.safeType}}|{{=p.required}}|{{=p.shortDesc || 'No description'}}|
+{{~}}
+
+{{? data.longDescs }}
+#### Детальное описание
+{{~ data.parameters :p}}{{? p.shortDesc !== p.description}}
+**{{=p.name}}**: {{=p.description}}{{?}}
+{{~}}
+{{?}}
+
+{{~ data.parameters :p}}
+
+{{? p.schema && p.schema.enum }}
+{{~ p.schema.enum :e}}
+{{ var entry = {}; entry.name = p.name; entry.value = e; data.enums.push(entry); }}
+{{~}}
+{{?}}
+
+{{? p.schema && p.schema.items && p.schema.items.enum }}
+{{~ p.schema.items.enum :e}}
+{{ var entry = {}; entry.name = p.name; entry.value = e; data.enums.push(entry); }}
+{{~}}
+{{?}}
+
+{{~}}
+
+{{? data.enums && data.enums.length }}
+#### Перечислимые типы
+
+|Параметр|Значение|
+|---|---|
+{{~ data.enums :e}}|{{=e.name}}|{{=data.utils.toPrimitive(e.value)}}|
+{{~}}
+{{?}}

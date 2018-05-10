@@ -523,7 +523,7 @@ function convertInner(api, options, callback) {
     }
 
     if (typeof templates === 'undefined') {
-        templates = dot.process({ path: path.join(__dirname, 'templates', 'openapi3') });
+        templates = dot.process({ path: path.join(__dirname, options.templatesPath, 'openapi3') });
     }
     if (options.user_templates) {
         templates = Object.assign(templates, dot.process({ path: options.user_templates }));

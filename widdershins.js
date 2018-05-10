@@ -65,6 +65,9 @@ var argv = require('yargs')
     .string('user_templates')
     .alias('u','user_templates')
     .describe('user_templates','directory to load override templates from')
+    .string("templates_path")
+    .alias('p', 'templates_path')
+    .describe('templates_path', 'directory to use as templates')
     .boolean('verbose')
     .alias('v','verbose')
     .describe('verbose','Increase verbosity')
@@ -131,6 +134,10 @@ options.resolve = argv.resolve;
 options.expandBody = argv.expandBody;
 options.maxDepth = argv.maxDepth;
 options.omitBody = argv.omitBody;
+options.templatesPath = "templates";
+if (argv.templates_path) {
+    options.templatesPath = argv.templates_path;
+}
 if (argv.search === false) options.search = false;
 if (argv.includes) options.includes = argv.includes.split(',');
 
